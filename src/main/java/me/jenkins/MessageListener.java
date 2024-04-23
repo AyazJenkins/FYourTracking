@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,7 +33,7 @@ public class MessageListener implements EventListener {
             // only resend if there is a tracking parameter in the URL, no need to resend if there isn't
             if (siParameter != null) {
                 TextChannel channel = event.getChannel().asTextChannel();
-                WebhookAction webhookAction = channel.createWebhook("uwuifier");
+                WebhookAction webhookAction = channel.createWebhook("tracking remover 5000");
                 webhookAction.setName(event.getAuthor().getName());
 
                 try (InputStream avatarStream = new URL(Objects.requireNonNull(event.getAuthor().getAvatarUrl())).openStream()) {
@@ -54,7 +53,7 @@ public class MessageListener implements EventListener {
     }
 
 
-    private static String[] parseYoutubeUrl(String url) {
+    private String[] parseYoutubeUrl(String url) {
         String siParameter = null;
         String trackerlessUrl = url;
 
